@@ -14,7 +14,7 @@ RSpec.describe Hyrax::Acl::CustomQueries::FindAccessControl do
       let(:resource) { resource_class.new }
 
       it 'raises ObjectNotFoundError' do
-        expect { query_handler.find_access_control_for(resource) }
+        expect { query_handler.find_access_control_for(resource: resource) }
           .to raise_error { Valkyrie::Persistence::ObjectNotFoundError }
       end
     end
@@ -30,7 +30,7 @@ RSpec.describe Hyrax::Acl::CustomQueries::FindAccessControl do
       before { acl } # ensure the acl gets saved
 
       it 'returns the acl' do
-        expect(query_handler.find_access_control_for(resource))
+        expect(query_handler.find_access_control_for(resource: resource))
           .to eq acl
       end
     end
@@ -46,7 +46,7 @@ RSpec.describe Hyrax::Acl::CustomQueries::FindAccessControl do
       end
 
       it 'raises ObjectNotFoundError' do
-        expect { query_handler.find_access_control_for(resource) }
+        expect { query_handler.find_access_control_for(resource: resource) }
           .to raise_error { Valkyrie::Persistence::ObjectNotFoundError }
       end
     end

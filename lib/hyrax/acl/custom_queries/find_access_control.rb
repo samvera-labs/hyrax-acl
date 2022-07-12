@@ -16,7 +16,7 @@ module Hyrax
         attr_reader :query_service
         delegate :resource_factory, to: :query_service
 
-        def find_access_control_for(resource)
+        def find_access_control_for(resource: )
           query_service
             .find_inverse_references_by(resource: resource, property: :access_to)
             .find { |r| r.is_a?(Hyrax::Acl::AccessControl) } ||
