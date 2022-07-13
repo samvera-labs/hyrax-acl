@@ -6,7 +6,7 @@ RSpec.describe Hyrax::Acl::AccessControlList do
   describe '#grant discover access' do
     subject { described_class.new(access_control: access_control) }
 
-    let(:agent) { Hyrax::Agent.new('hyrax_group/superskunk') }
+    let(:agent) { Hyrax::Acl::Agent.new('hyrax_group/superskunk') }
     let(:target_id) { Valkyrie::ID.new('moomin') }
     let(:access_control) { Hyrax::Acl::AccessControl.new(access_to: target_id, permissions: [permission]) }
     let(:permission) { Hyrax::Acl::Permission.new(mode: mode, agent: agent.agent_key, access_to: target_id) }

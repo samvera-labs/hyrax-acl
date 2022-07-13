@@ -30,28 +30,28 @@ module Hyrax
 
       ##
       # Discover grant
-      # @agent [Hyrax::Agent] agent
+      # @agent [Hyrax::Acl::Agent] agent
       def has_discover?(agent:)
         has_grant?(mode: DISCOVER, agent: agent)
       end
 
       ##
       # Read grant
-      # @agent [Hyrax::Agent] agent
+      # @agent [Hyrax::Acl::Agent] agent
       def has_read?(agent:)
         has_grant?(mode: READ, agent: agent)
       end
 
       ##
       # Edit grant
-      # @agent [Hyrax::Agent] agent
+      # @agent [Hyrax::Acl::Agent] agent
       def has_edit?(agent:)
         has_grant?(mode: EDIT, agent: agent)
       end
 
       ##
       # Edit grant
-      # @agent [Hyrax::Agent] agent
+      # @agent [Hyrax::Acl::Agent] agent
       def has_grant?(mode:, agent:)
         permissions.any? do |permission|
           permission.mode ==  mode && permission.agent == agent.agent_key
