@@ -1,4 +1,5 @@
 require 'valkyrie'
+require 'hyrax/acl/agent'
 require 'hyrax/acl/permission'
 require 'hyrax/acl/access_control'
 require 'hyrax/acl/custom_queries'
