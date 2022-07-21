@@ -160,7 +160,7 @@ RSpec.describe Hyrax::Acl::AccessControlList do
         context 'and the same permission is added again' do
           before { acl << permission }
 
-          xit { is_expected.not_to be_pending_changes }
+          it { is_expected.not_to be_pending_changes }
         end
       end
     end

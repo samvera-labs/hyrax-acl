@@ -160,7 +160,7 @@ module Hyrax
       ##
       # @api private
       def change_set
-        @change_set ||= ChangeSet.for(access_control_model)
+        @change_set ||= AccessControlChangeSet.new(access_control_model)
       end
 
       ##

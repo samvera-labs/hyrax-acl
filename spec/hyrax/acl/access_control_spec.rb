@@ -9,7 +9,7 @@ RSpec.describe Hyrax::Acl::AccessControl do
   let(:query_service) { adapter.query_service }
 
   let(:controlled_resource_class) { Class.new(Valkyrie::Resource) }
-  let(:controlled_resource) { controlled_resource_class.new(id: 'etaoin') }
+ let(:controlled_resource) { controlled_resource_class.new(id: 'etaoin') }
 
   let(:resource_klass) { Class.new(Valkyrie::Resource) }
 
