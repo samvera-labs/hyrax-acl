@@ -26,7 +26,7 @@ RSpec.describe Hyrax::Acl::AccessControlList do
   end
 
   describe "read API" do
-    let(:agent) { Hyrax::Acl::Agent.new('hyrax_group/superskunk') }
+    let(:agent) { Hyrax::Acl::Group.new('superskunk') }
 
     before do
       acl << permission
@@ -67,7 +67,7 @@ RSpec.describe Hyrax::Acl::AccessControlList do
   describe 'grant DSL' do
     let(:mode) { :read }
     let(:user) { Hyrax::Acl::Agent.new('user1') }
-    let(:group) { Hyrax::Acl::Agent.new("group/public") }
+    let(:group) { Hyrax::Acl::Group.new("public") }
 
     describe '#grant' do
       it 'grants a permission' do
