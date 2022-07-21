@@ -145,6 +145,10 @@ RSpec.describe Hyrax::Acl::AccessControlList do
         .from be_empty
     end
 
+    it 'does not yield' do
+      expect { |block| acl.save(&block) }.not_to yield_control
+    end
+
     context 'with additions' do
       let(:permissions)      { [permission, other_permission] }
       let(:other_permission) do
@@ -157,6 +161,10 @@ RSpec.describe Hyrax::Acl::AccessControlList do
         expect { acl.save }
           .to change { Hyrax::Acl::AccessControl.for(resource: resource, query_service: acl.query_service).permissions }
           .to contain_exactly(*permissions)
+      end
+
+      it 'yields itself' do
+        expect { |block| acl.save(&block) }.to yield_with_args(acl)
       end
     end
 
@@ -179,6 +187,14 @@ RSpec.describe Hyrax::Acl::AccessControlList do
         expect { acl.save }
           .to change { Hyrax::Acl::AccessControl.for(resource: resource, query_service: acl.query_service).permissions }
           .to contain_exactly(*rest)
+      end
+
+      it 'yields itself' do
+        delete_me = acl.permissions.first
+        acl.delete(delete_me)
+        rest = acl.permissions.clone
+
+        expect { |block| acl.save(&block) }.to yield_with_args(acl)
       end
     end
   end

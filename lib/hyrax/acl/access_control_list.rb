@@ -136,6 +136,7 @@ module Hyrax
       #
       # Saves the ACL for the resource, by saving each permission policy
       #
+      # @yield [acl] gives self to the block only if the save is successful
       # @return [Boolean]
       def save
         return true unless pending_changes?
