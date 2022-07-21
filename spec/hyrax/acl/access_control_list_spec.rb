@@ -138,6 +138,34 @@ RSpec.describe Hyrax::Acl::AccessControlList do
     end
   end
 
+  describe '#pending_changes?' do
+    it { is_expected.not_to be_pending_changes }
+
+    context 'with an added acl' do
+      before { acl << permission }
+
+      it { is_expected.to be_pending_changes }
+
+      context 'and it is saved' do
+        before { acl.save }
+
+        it { is_expected.not_to be_pending_changes }
+
+        context 'and it is removed' do
+          before { acl.delete(permission) }
+
+          it { is_expected.to be_pending_changes }
+        end
+
+        context 'and the same permission is added again' do
+          before { acl << permission }
+
+          xit { is_expected.not_to be_pending_changes }
+        end
+      end
+    end
+  end
+
   describe '#save' do
     it 'leaves permissions unchanged by default' do
       expect { acl.save }
