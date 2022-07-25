@@ -109,6 +109,20 @@ RSpec.describe Hyrax::Acl::AccessControlList do
                                             agent: permission.agent,
                                             access_to: resource.id))
     end
+
+    context 'when the permission is for the wrong resource' do
+      let(:permission) do
+        Hyrax::Acl::Permission.new(access_to: 'another_one', mode: :read, agent: 'fake_user_id')
+      end
+
+      it 'raises an argument error' do
+        expect { acl << permission }.to raise_error ArgumentError
+      end
+
+      it 'does not change permissions' do
+        expect { begin; acl << permission; rescue; end }.not_to change { acl.permissions }
+      end
+    end
   end
 
   describe '#delete' do

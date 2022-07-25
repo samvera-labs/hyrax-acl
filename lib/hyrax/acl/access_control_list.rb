@@ -42,7 +42,15 @@ module Hyrax
       # @param permission [Hyrax::Permission]
       #
       # @return [Boolean]
+      # @raise [ArgumentError] when passing a permission that claims to be
+      #   about another resource
       def <<(permission)
+        if permission.access_to.present? && permission.access_to != resource.id
+          raise(ArgumentError, "Tried to add a permission for resource " \
+                               " #{permission.access_to}; but this " \
+                               "#{self.class} governs #{resource.id}.")
+        end
+
         permission.access_to = resource.id
 
         change_set.permissions += [permission]
