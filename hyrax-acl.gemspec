@@ -4,8 +4,9 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'hyrax/acl/version'
 
 Gem::Specification.new do |spec|
-  spec.authors       = [""]
-  spec.description   = 'Hyrax Access Control List'
+  spec.authors       = ["Project Surfliner"]
+  spec.emails        = ["tomjohnson@ucsb.edu"]
+  spec.description   = 'Access Control List models and support for Hyrax'
   spec.summary       = <<-SUMMARY
   Hyrax Access Control List
 SUMMARY
@@ -22,10 +23,7 @@ SUMMARY
 
   spec.required_ruby_version = '>= 2.7'
 
-  # NOTE: rails does not follow sem-ver conventions, it's
-  # minor version releases can include breaking changes; see
-  # http://guides.rubyonrails.org/maintenance_policy.html
-
   spec.add_dependency "valkyrie", "~> 2"
-  spec.add_dependency "rspec"
+
+  spec.add_development_dependency "rspec"
 end
