@@ -5,7 +5,7 @@ require 'hyrax/acl/version'
 
 Gem::Specification.new do |spec|
   spec.authors       = ["Project Surfliner"]
-  spec.emails        = ["tomjohnson@ucsb.edu"]
+  spec.email         = ["tomjohnson@ucsb.edu"]
   spec.description   = 'Access Control List models and support for Hyrax'
   spec.summary       = <<-SUMMARY
   Hyrax Access Control List
