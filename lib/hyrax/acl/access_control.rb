@@ -36,10 +36,10 @@ module Hyrax
       #
       # @return [AccessControl]
       # @raise [ArgumentError] if the resource is not persisted
-      def self.for(resource:, query_service: Hyrax.query_service)
-        query_service.custom_queries.find_access_control_for(resource: resource)
+      def self.for(resource:, query_service:)
+        Hyrax::Acl::CustomQueries::FindAccessControl.new(query_service: query_service).find_access_control_for(resource: resource)
       rescue Valkyrie::Persistence::ObjectNotFoundError
-        new(access_to: resource.id)
+        new(access_to: resource.id, permissions: [])
       end
     end
   end

@@ -35,12 +35,6 @@ RSpec.describe Hyrax::Acl::AccessControl do
       )
     end
 
-    before do
-      query_service.custom_queries.register_query_handler(
-        Hyrax::Acl::CustomQueries::FindAccessControl
-      )
-    end
-
     it 'returns an access control model for the resource given' do
       expect(retrieved_access_control)
         .to have_attributes(access_to: controlled_resource.id)
