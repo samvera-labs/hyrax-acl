@@ -28,7 +28,7 @@ module Hyrax
 
       # Don’t typecheck the permissions because they may be a Hyrax::Permission
       # or a Hyrax::Acl::Permission.
-      attribute :permissions, Valkyrie::Types::Set
+      attribute :permissions
 
       ##
       # A finder/factory method for getting an appropriate ACL for a given
