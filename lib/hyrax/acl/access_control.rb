@@ -25,7 +25,9 @@ module Hyrax
       # @!attribute [rw] permissions
       #   @return [Enumerable<Hyrax::Acl::Permission>]
       attribute :access_to,   Valkyrie::Types::ID
-      attribute :permissions, Valkyrie::Types::Set.of(Hyrax::Acl::Permission)
+      attribute :permissions, Valkyrie::Types::Set.of(
+        Valkyrie::Types.Instance(Hyrax::Acl::Permission)
+      )
 
       ##
       # A finder/factory method for getting an appropriate ACL for a given
