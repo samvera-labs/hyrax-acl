@@ -23,7 +23,7 @@ SUMMARY
 
   spec.required_ruby_version = '>= 2.7'
 
-  spec.add_dependency "valkyrie", "~> 2"
+  spec.add_dependency "valkyrie", "> 2", "< 4"
 
   spec.add_development_dependency "rspec"
 end
